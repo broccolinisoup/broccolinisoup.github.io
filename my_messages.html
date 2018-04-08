@@ -3,16 +3,13 @@
   <title>x-domain Ex</title>
   <script>
     function receiveMessage (event) {
-      console.log(event.origin);
-      document.getElementById("my-msg").innerHTML = event.data;
-    	// if (event.origin !== "localhost:8080") {
-    	// 	return;
-    	// }
-    	// else {
-      //   var message = event.data;
-    	// 	document.getElementById("my-msg").innerHTML = message;
-    	// }
-
+    	if (event.origin !== "http://localhost:8080") {
+    		return;
+    	}
+    	else {
+        var message = event.data;
+    		document.getElementById("my-msg").innerHTML = message;
+    	}
     }
 
     window.addEventListener("message", receiveMessage, false);
